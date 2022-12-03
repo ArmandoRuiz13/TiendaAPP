@@ -9,6 +9,7 @@ export default class Pantallab extends Component {
       //numero aleatorio
       numero: Math.floor(Math.random() * 10000),
       Carritostatus:"",
+      nombre:props.route.params.nombre,
     };
   }
   componentDidMount(){
@@ -17,7 +18,7 @@ export default class Pantallab extends Component {
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
     // Typical action to be performed when the document is ready:
-      var result=(xhttp.responseText);   
+      var result=(xhttp.responseText);
       if (result=="Carrito Vacio"){
         _this.setState({Carritostatus:result});
       }
@@ -43,10 +44,14 @@ export default class Pantallab extends Component {
       xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         var result=(xhttp.responseText);   
-        console.log(result);
-        navigate("CompradorPedido",{numero:_this.state.numero});
-      }
+        if (_this.state.Carritostatus=="Carrito Vacio"){
+          alert("Carrito vacio");
+        }
+        else{
+        navigate("CompradorPedido",{numero:_this.state.numero,nombre:_this.state.nombre});
+        }
     }
+  }
   xhttp.open("GET", "https://pinternet13.000webhostapp.com/Tienda/CrearPedido.php?Npedido="+this.state.numero, true);
   xhttp.send();
       }
@@ -103,17 +108,17 @@ const styles = StyleSheet.create({
   texts:{
     fontSize:12,
     color:"orange",
-    backgroundColor:"gray",
+    backgroundColor:"#1f1f1f",
   },
   textsl:{
     fontSize:20,
     color:"orange",
-    backgroundColor:"gray",
+    backgroundColor:"#1f1f1f",
     textAlign:"center",
   },
   textsll:{
     fontSize:30,
-    color:"Gray",
+    color:"#1f1f1f",
     textAlign:"center",
   },
   textst:{

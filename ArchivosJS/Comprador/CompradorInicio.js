@@ -6,6 +6,7 @@ export default class Pantallab extends Component {
     super(props);
     this.state = {
       datosServer:"",
+      nombre:props.route.params.nombre,
     };
   }
   componentDidMount(){
@@ -26,7 +27,7 @@ export default class Pantallab extends Component {
   render() {
     const {navigate} = this.props.navigation;
     const btnClick = () => {
-        navigate("CarritoVerProductos");
+        navigate("CarritoVerProductos",{nombre:this.state.nombre});
       }
     const getItem=(ProductoID,ProductoNombre,ProductoPrecio,ProductoImagen)=>{
       //ir a la siguiente ventana con variables
@@ -63,12 +64,12 @@ const styles = StyleSheet.create({
   texts:{
     fontSize:12,
     color:"orange",
-    backgroundColor:"gray",
+    backgroundColor:"#1f1f1f",
   },
   textsl:{
     fontSize:20,
     color:"orange",
-    backgroundColor:"gray",
+    backgroundColor:"#1f1f1f",
     textAlign:"center",
   },
   textst:{

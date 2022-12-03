@@ -10,6 +10,7 @@ export default class Pantallab extends Component {
       cantidad: "",
       repartidor:"Pendiente",
       estatus:"Pendiente",
+      nombre: props.route.params.nombre,
     };
   }
   componentDidMount(){
@@ -45,7 +46,7 @@ export default class Pantallab extends Component {
   }
   xhttp.open("GET", "https://pinternet13.000webhostapp.com/Tienda/TotalPedidoAdd.php?id="+this.state.numero+"&repartidor="+this.state.repartidor+"&nproductos="+this.state.cantidad+"&estatus="+this.state.estatus, true);
   xhttp.send();
-      navigate("CompradorPedidoFinal",{numero:_this.state.numero,cantidad:_this.state.cantidad});
+      navigate("CompradorPedidoFinal",{numero:_this.state.numero,cantidad:_this.state.cantidad,nombre:_this.state.nombre});
     }
     const celda =({item})=>{
       return(

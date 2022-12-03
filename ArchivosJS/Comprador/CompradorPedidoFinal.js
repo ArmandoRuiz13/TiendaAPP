@@ -10,6 +10,7 @@ export default class Pantallab extends Component {
       repartidor:"",
       estatus:"",
       cantidad:props.route.params.cantidad,
+      nombre:props.route.params.nombre,
     };
   }
   componentDidMount(){
@@ -49,7 +50,7 @@ export default class Pantallab extends Component {
       xhttp.send();
     }
     const btnClick1 = () => {
-        navigate("EmpezarCarrito");
+        navigate("EmpezarCarrito",{nombre:this.state.nombre});
     }
     const celda =({item})=>{
       return(

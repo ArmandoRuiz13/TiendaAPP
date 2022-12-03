@@ -7,6 +7,7 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      nombre: props.route.params.nombre,
     };
   }
 
@@ -18,7 +19,7 @@ export default class Login extends Component {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          navigate("CompradorInicio")
+          navigate("CompradorInicio",{nombre:_this.state.nombre});
        // Typical action to be performed when the document is ready: 
         }
 };
@@ -26,7 +27,7 @@ xhttp.open("GET", "https://pinternet13.000webhostapp.com/Tienda/EliminarDatosCar
 xhttp.send();
       }
       const btnClick1 = () => {
-        navigate("BusquedaPedido");
+        navigate("BusquedaPedido",{nombre:_this.state.nombre});
       }
       const btnClick2 = () => {
         navigate("LOGIN")
@@ -35,7 +36,7 @@ xhttp.send();
       <View style={styles.screen}>
         <Image style={styles.logo} source={require("./../../Imagenes/logo.png")}/>
         <Text style={styles.text}>BIENVENIDO</Text>
-        <Text style={styles.text}>{this.props.route.params.nombre.toUpperCase()}</Text>
+        <Text style={styles.text}>{this.state.nombre.toUpperCase()}</Text>
         <View style={styles.boton}>
           <Button title="EMPEZAR COMPRA" style={{color:'yellow'}} onPress={btnClick}></Button>
         </View>

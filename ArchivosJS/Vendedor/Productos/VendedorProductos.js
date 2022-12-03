@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     texts:{
       fontSize:11,
       color:"orange",
-      backgroundColor:"gray",
+      backgroundColor:"#1f1f1f",
     },
     textst:{
       fontSize:30,
